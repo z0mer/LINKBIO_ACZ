@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>anna carolina • bookgram</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Quicksand&display=swap" rel="stylesheet" />
+
+  <!-- Estilo -->
+  <link rel="stylesheet" href="./css/index.css" />
+
+  <!-- Ícone -->
+  <link rel="icon" href="./imagens/Logo.png" />
+
+  <!-- Ícones Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Versão Mobile -->
+  <div class="mobile-version">
+    <header class="cabecalho">
+      <img class="logo" src="./imagens/foto_perfil.jpeg" alt="Profile" />
+      <p class="title"><strong>anna carolina • bookstan</strong></p>
+      <p class="bio">✨ • escritora e leitora</p>
+      <p class="bio">vem conhecer a sua próxima leitura...</p>
+      <div class="social-midias">
+        <a href="https://www.instagram.com/autora_acz" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.tiktok.com/@readingw.carola?_t=ZM-8v6NLu3SEmT&_r=1" target="_blank"><i class="bi bi-tiktok"></i></a>
+      </div>
+    </header>
+
+    <!-- Campo de busca -->
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Buscar livro ou autor(a)..." />
+    </div>
+
+    <!-- Dropdown de gênero -->
+    <div class="genre-container">
+      <select id="genre-select">
+        <option value="">Todos os gêneros</option>
+      </select>
+    </div>
+
+    <div class="corpo">
+      <div class="others-links">
+        <a href="https://amzn.to/3XjzeWM" class="botao ku" target="_blank">Kindle Unlimited gratuito por 30 dias 🌻</a>
+      </div>
+
+      <!-- Lista de livros -->
+      <div id="livros-container-amz"></div>
+    </div>
+
+    <footer style="text-align: center; margin: 20px 0; font-size: 10px;">
+      <p>Copyright &copy; carola</p>
+    </footer>
+  </div>
+
+    <!-- Pop-up (exibido apenas no mobile via CSS e JS) -->
+    <div id="popup-container" class="popup">
+        <div class="popup-content">
+        <button class="fechar-popup" id="fechar-popup">×</button>
+        <p class="popup-texto">
+            <strong>Todos os livros indicados são nacionais!</strong><br><br>
+            <strong>Lembrando:</strong> você pode aproveitar 30 dias gratuitos de leitura com o Kindle Unlimited. <br><br>
+            <em>Caso não encontre o livro, basta pesquisar (nome ou autor), ou filtrar o gênero 🥰</em>
+        </p>
+        </div>
+    </div>
+  
+
+  <!-- Script JS -->
+  <script type="module" src="./js/script.js"></script>
+</body>
+</html>

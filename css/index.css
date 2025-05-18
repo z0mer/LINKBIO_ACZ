@@ -1,0 +1,229 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ANIMAÇÃO DE FUNDO */
+@keyframes morphGradient {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  font-family: 'Lora', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(45deg, #d46a6a, #e6a5a5, #f5d0d0);
+  background-size: 300% 300%;
+  animation: morphGradient 15s infinite ease-in-out;
+  min-height: 100vh;
+}
+
+.mobile-version { display: block; }
+.desktop-version { display: none; }
+
+.cabecalho {
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.logo {
+  width: 35%;
+  border-radius: 100%;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 18px;
+  white-space: nowrap;
+  margin: 10px;
+}
+
+.bio { font-size: 14px; }
+
+.social-midias {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  white-space: nowrap;
+}
+
+.social-midias i {
+  font-size: 25px;
+  color: #000;
+  transition: transform 0.1s ease-out;
+}
+
+.social-midias i:hover {
+  transform: scale(1.1);
+}
+
+.tema {
+  margin: 15px;
+  color: #000000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75vw;
+  padding: 20px;
+  margin: 10px 0 20px 0;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #fffaf3;
+  color: #000;
+  text-decoration: none;
+  box-shadow: 6px 6px 0px #8c3b3b, 6px 6px 0px 2px #8c3b3b;
+  border: 2px solid #8c3b3b;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+.botao:hover {
+  box-shadow: 3px 3px 0px #8c3b3b, 3px 3px 0px 2px #8c3b3b;
+  transform: translate(3px, 3px);
+}
+
+.ku {
+  box-shadow: 6px 6px 0px #6b1e1e, 6px 6px 0px 2px #6b1e1e;
+  border: 2px solid #6b1e1e;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.ku:hover {
+  box-shadow: 3px 3px 0px #6b1e1e, 3px 3px 0px 2px #6b1e1e;
+}
+
+.search-container,
+.genre-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-container {
+  margin: 20px 0 5px 0;
+}
+
+.genre-container {
+  margin: 5px 0 20px 0;
+}
+
+.search-container input {
+  width: 75vw;
+  padding: 15px;
+  margin: 10px 0 5px 0;
+  border-radius: 30px;
+  background-color: #ffffff;
+  color: #000;
+  font-family: 'Bitter', serif;
+  font-size: 14px;
+  border: 2px solid #ffffff;
+  outline: none;
+}
+
+.genre-container select {
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Bitter', serif;
+  font-size: 14px;
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+  color: #000;
+  cursor: pointer;
+}
+
+.genre-container select:hover {
+  transform: scale(1.01);
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.popup.mostrar {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-content {
+  background-color: #fff0f5;
+  border: 2px solid #8c3b3b;
+  padding: 25px;
+  border-radius: 15px;
+  width: 85vw;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  font-family: 'Lora', serif;
+  position: relative;
+  animation: popupIn 0.6s ease forwards;
+}
+
+.popup-content.fechar {
+  animation: popupOut 0.4s ease forwards;
+}
+
+@keyframes popupIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes popupOut {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0; }
+}
+
+.popup-texto {
+  color: #8c3b3b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.popup-texto strong {
+  color: #8c3b3b;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.fechar-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #8c3b3b;
+  cursor: pointer;
+  font-weight: bold;
+}
