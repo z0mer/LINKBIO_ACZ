@@ -35,7 +35,7 @@ function preencherDropdownGeneros() {
   });
 }
 
-// Renderiza os livros agrupados por gênero e ordenados alfabeticamente pelo título
+// Renderiza os livros agrupados por autor (padrão), com filtro por gênero
 function renderizarLivros() {
   const valorBusca = document.getElementById("search-bar").value;
   const buscaNormalizada = normalizarTexto(valorBusca);
@@ -43,7 +43,6 @@ function renderizarLivros() {
   const containerAMZ = document.getElementById("livros-container-amz");
   containerAMZ.innerHTML = "";
 
-  // Filtra os livros com base na busca e no gênero selecionado
   const livrosFiltrados = livrosAMZ.filter(livro => {
     const tituloNormalizado = normalizarTexto(livro.titulo);
     const autorNormalizado = normalizarTexto(livro.autor);
@@ -55,35 +54,28 @@ function renderizarLivros() {
     return combinaBusca && combinaGenero;
   });
 
-  // Agrupa os livros por gênero
-  const livrosPorGenero = {};
+  // Agrupa os livros por autor
+  const livrosPorAutor = {};
   livrosFiltrados.forEach(livro => {
-    livro.genero.forEach(g => {
-      if (!generoSelecionado || g === generoSelecionado) {
-        if (!livrosPorGenero[g]) {
-          livrosPorGenero[g] = [];
-        }
-        livrosPorGenero[g].push(livro);
-      }
-    });
+    const autor = livro.autor;
+    if (!livrosPorAutor[autor]) {
+      livrosPorAutor[autor] = [];
+    }
+    livrosPorAutor[autor].push(livro);
   });
 
-  // Ordena os gêneros alfabeticamente
-  const generosOrdenados = Object.keys(livrosPorGenero).sort((a, b) => a.localeCompare(b));
-  generosOrdenados.forEach(genero => {
-    // Ordena os livros dentro do gênero em ordem alfabética pelo título
-    livrosPorGenero[genero].sort((a, b) => a.titulo.localeCompare(b.titulo));
+  const autoresOrdenados = Object.keys(livrosPorAutor).sort((a, b) => a.localeCompare(b));
+  autoresOrdenados.forEach(autor => {
+    const tituloAutor = document.createElement("h3");
+    tituloAutor.textContent = autor;
+    tituloAutor.classList.add("tema");
+    containerAMZ.appendChild(tituloAutor);
 
-    const tituloGenero = document.createElement("h3");
-    tituloGenero.textContent = genero;
-    tituloGenero.classList.add("tema");
-    containerAMZ.appendChild(tituloGenero);
-
-    livrosPorGenero[genero].forEach(livro => {
+    livrosPorAutor[autor].sort((a, b) => a.titulo.localeCompare(b.titulo)).forEach(livro => {
       const botao = document.createElement("a");
       botao.classList.add("botao");
       botao.href = livro.link;
-      botao.textContent = `${livro.titulo} - ${livro.autor} 💫`;
+      botao.textContent = `${livro.titulo}`;
       botao.target = "_blank";
       containerAMZ.appendChild(botao);
     });
